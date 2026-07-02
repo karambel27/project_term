@@ -15,7 +15,7 @@
 
 ### Современный адаптивный лендинг, разработанный полностью с нуля без использования конструкторов сайтов.
 
-<img src="assets/preview.jpg" width="100%">
+<img src="assets/preview.png" width="100%">
 
 </div>
 
@@ -82,13 +82,8 @@
 
 ## Главная страница
 
-<img src="assets/preview.jpg" width="100%">
-
----
-
-## Галерея
-
-<img src="assets/gallery-preview.jpg" width="100%">
+<img src="assets/preview.png" width="100%">
+<img src="assets/target.png" width="100%">
 
 ---
 
