@@ -182,7 +182,7 @@ h2{
   position:absolute;inset:0;
   background:
     linear-gradient(90deg,rgba(7,16,24,.98),rgba(7,16,24,.77),rgba(7,16,24,.34)),
-    url("assets/mine-work.jpg") center/cover no-repeat;
+    url("assets/jfd.png") center/cover no-repeat;
 }
 .band-inner{
   position:relative;
@@ -247,7 +247,7 @@ h2{
   position:absolute;inset:0;
   background:
     linear-gradient(90deg,rgba(7,16,24,.96),rgba(7,16,24,.72)),
-    url("assets/carrier.jpg") center/cover no-repeat;
+    url("assets/orig22.webp") center/cover no-repeat;
 }
 .carrier-content{
   position:relative;
@@ -409,7 +409,7 @@ h2{
   padding:58px 0 38px;
   background:
     linear-gradient(180deg,rgba(7,16,24,.98),rgba(7,16,24,.96)),
-    url("assets/mine-work.jpg") center bottom/cover no-repeat;
+    url("assets/mine-ork.jpg") center bottom/cover no-repeat;
   border-top:1px solid rgba(255,255,255,.08);
 }
 .contact-grid{display:grid;grid-template-columns:.75fr 1.2fr .55fr;gap:40px;align-items:start}

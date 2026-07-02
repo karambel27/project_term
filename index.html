@@ -90,7 +90,6 @@
                     <div><img src="assets/icon-people.svg" alt=""><span>Выстроенные процессы и координация</span></div>
                     <div><img src="assets/icon-shield.svg" alt=""><span>Ответственность за результат</span></div>
                 </div>
-                <a href="#contacts" class="btn outline">Подробнее о компании</a>
             </div>
             <div class="about-photo" data-aos="fade-left" data-aos-delay="150">
                 <img src="assets/control-room.jpg" alt="Диспетчерский центр ВОСТОК">
@@ -243,13 +242,13 @@
                 </div>
             </div>
 
-            <form class="lead-form" onsubmit="event.preventDefault(); alert('Заявка отправлена!');">
-                <input required placeholder="Ваше имя">
-                <input required placeholder="Телефон">
-                <input placeholder="Компания">
-                <input placeholder="Объект / Регион">
-                <input class="wide" placeholder="Какую технику можете предоставить?">
-                <textarea class="wide" placeholder="Комментарий"></textarea>
+            <form class="lead-form" action="send.php" method="POST">
+                <input name="name" required placeholder="Ваше имя">
+                <input name="phone" required placeholder="Телефон">
+                <input name="company" placeholder="Компания">
+                <input name="region" placeholder="Объект / Регион">
+                <input name="tech" class="wide" placeholder="Какую технику можете предоставить?">
+                <textarea name="message" class="wide" placeholder="Комментарий"></textarea>
                 <label class="policy"><input type="checkbox" checked> Нажимая кнопку, вы соглашаетесь с политикой
                     конфиденциальности</label>
                 <button class="btn wide" type="submit">Отправить заявку</button>
@@ -272,10 +271,10 @@
     <button class="lightbox-arrow lightbox-next" id="nextPhoto" type="button">›</button>
 </div>
 <div class="floating-socials">
-    <a href="https://wa.me/79991234567" target="_blank" class="floating-social whatsapp" aria-label="WhatsApp">
+    <a href="https://wa.me/" target="_blank" class="floating-social whatsapp" aria-label="WhatsApp">
         W
     </a>
-    <a href="https://t.me/vostok_logistics" target="_blank" class="floating-social telegram" aria-label="Telegram">
+    <a href="https://t.me/" target="_blank" class="floating-social telegram" aria-label="Telegram">
         T
     </a>
 </div>
@@ -289,12 +288,12 @@
 </footer>
 <script>
     const photos = [
-      "assets/sammot.jpg",
-      "assets/gallery-2.jpg",
-      "assets/gallery-3.jpg",
-      "assets/gallery-4.jpg",
-      "assets/gallery-5.jpg",
-      "assets/gallery-6.jpg"
+        "assets/sammot.jpg",
+        "assets/gallery-2.jpg",
+        "assets/gallery-3.jpg",
+        "assets/gallery-4.jpg",
+        "assets/gallery-5.jpg",
+        "assets/gallery-6.jpg"
     ];
 
     let currentPhoto = 0;
@@ -313,67 +312,67 @@
     const lightboxImage = document.getElementById("lightboxImage");
 
     function updateMainGallery(index) {
-      currentPhoto = index;
+        currentPhoto = index;
 
-      if (currentPhoto < 0) currentPhoto = photos.length - 1;
-      if (currentPhoto >= photos.length) currentPhoto = 0;
+        if (currentPhoto < 0) currentPhoto = photos.length - 1;
+        if (currentPhoto >= photos.length) currentPhoto = 0;
 
-      mainImg.src = photos[currentPhoto];
+        mainImg.src = photos[currentPhoto];
 
-      document.querySelectorAll(".gallery-dot").forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentPhoto);
-      });
-      thumbs.forEach((thumb, index) => {
-    thumb.classList.toggle("active", index === currentPhoto);
-  });
+        document.querySelectorAll(".gallery-dot").forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentPhoto);
+        });
+        thumbs.forEach((thumb, index) => {
+            thumb.classList.toggle("active", index === currentPhoto);
+        });
     }
 
     function renderDots() {
-      dotsContainer.innerHTML = "";
+        dotsContainer.innerHTML = "";
 
-      photos.forEach((photo, index) => {
-        const dot = document.createElement("button");
-        dot.className = "gallery-dot";
-        dot.type = "button";
+        photos.forEach((photo, index) => {
+            const dot = document.createElement("button");
+            dot.className = "gallery-dot";
+            dot.type = "button";
 
-        dot.addEventListener("click", () => {
-          updateMainGallery(index);
+            dot.addEventListener("click", () => {
+                updateMainGallery(index);
+            });
+
+            dotsContainer.appendChild(dot);
         });
-
-        dotsContainer.appendChild(dot);
-      });
     }
 
     function openGallery(index = 0) {
-      updateMainGallery(index);
-      lightboxImage.src = photos[currentPhoto];
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
+        updateMainGallery(index);
+        lightboxImage.src = photos[currentPhoto];
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
     }
 
     function closeGallery() {
-      lightbox.classList.remove("active");
-      document.body.style.overflow = "";
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
     }
 
     galleryPrev.addEventListener("click", () => {
-      updateMainGallery(currentPhoto - 1);
+        updateMainGallery(currentPhoto - 1);
     });
 
     galleryNext.addEventListener("click", () => {
-      updateMainGallery(currentPhoto + 1);
+        updateMainGallery(currentPhoto + 1);
     });
     thumbs.forEach((thumb) => {
 
-  thumb.addEventListener("click", () => {
+        thumb.addEventListener("click", () => {
 
-    updateMainGallery(
-      Number(thumb.dataset.index)
-    );
+            updateMainGallery(
+                Number(thumb.dataset.index)
+            );
 
-  });
+        });
 
-});
+    });
 
     openBtn.addEventListener("click", () => openGallery(currentPhoto));
     mainImg.addEventListener("click", () => openGallery(currentPhoto));
@@ -381,48 +380,48 @@
     closeBtn.addEventListener("click", closeGallery);
 
     prevBtn.addEventListener("click", () => {
-      updateMainGallery(currentPhoto - 1);
-      lightboxImage.src = photos[currentPhoto];
+        updateMainGallery(currentPhoto - 1);
+        lightboxImage.src = photos[currentPhoto];
     });
 
     nextBtn.addEventListener("click", () => {
-      updateMainGallery(currentPhoto + 1);
-      lightboxImage.src = photos[currentPhoto];
+        updateMainGallery(currentPhoto + 1);
+        lightboxImage.src = photos[currentPhoto];
     });
 
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeGallery();
+        if (event.target === lightbox) closeGallery();
     });
 
     document.addEventListener("keydown", (event) => {
-      if (lightbox.classList.contains("active")) {
-        if (event.key === "Escape") closeGallery();
+        if (lightbox.classList.contains("active")) {
+            if (event.key === "Escape") closeGallery();
 
-        if (event.key === "ArrowLeft") {
-          updateMainGallery(currentPhoto - 1);
-          lightboxImage.src = photos[currentPhoto];
-        }
+            if (event.key === "ArrowLeft") {
+                updateMainGallery(currentPhoto - 1);
+                lightboxImage.src = photos[currentPhoto];
+            }
 
-        if (event.key === "ArrowRight") {
-          updateMainGallery(currentPhoto + 1);
-          lightboxImage.src = photos[currentPhoto];
+            if (event.key === "ArrowRight") {
+                updateMainGallery(currentPhoto + 1);
+                lightboxImage.src = photos[currentPhoto];
+            }
         }
-      }
     });
 
     renderDots();
     updateMainGallery(0);
 </script>
-</script>
+
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
     AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 80
+        duration: 900,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 80
     });
 </script>
 
